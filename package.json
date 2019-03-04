@@ -1,0 +1,33 @@
+{
+  "name": "masterfe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./pages/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Master-App/masterfe.git"
+  },
+  "author": "Qin Guan",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/Master-App/masterfe/issues"
+  },
+  "homepage": "https://github.com/Master-App/masterfe#readme",
+  "dependencies": {
+    "next": "^8.0.3",
+    "next-redux-wrapper": "^3.0.0-alpha.2",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "react-redux": "^6.0.1",
+    "redux": "^4.0.1"
+  },
+  "devDependencies": {
+    "redux-devtools": "^3.5.0"
+  }
+}
