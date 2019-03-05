@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { updateEmail } from "../actions";
 
 class IndexPage extends Component {
   render() {
@@ -7,4 +8,11 @@ class IndexPage extends Component {
   }
 }
 
-export default connect(state => state)(IndexPage);
+const mapDispatchToProps = dispatch => ({
+  updateEmail: email => dispatch(updateEmail(email))
+});
+
+export default connect(
+  state => state,
+  mapDispatchToProps
+)(IndexPage);

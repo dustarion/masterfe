@@ -93,6 +93,60 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
+/***/ "./Constants.js":
+/*!**********************!*\
+  !*** ./Constants.js ***!
+  \**********************/
+/*! exports provided: redux */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "redux", function() { return redux; });
+var redux = {
+  USER_EMAIL: "useremail",
+  RESET_ALL: "resetall"
+};
+
+/***/ }),
+
+/***/ "./actions/User.js":
+/*!*************************!*\
+  !*** ./actions/User.js ***!
+  \*************************/
+/*! exports provided: updateEmail */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateEmail", function() { return updateEmail; });
+/* harmony import */ var _Constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Constants */ "./Constants.js");
+
+function updateEmail(email) {
+  return {
+    type: _Constants__WEBPACK_IMPORTED_MODULE_0__["redux"].USER_EMAIL,
+    email: email
+  };
+}
+
+/***/ }),
+
+/***/ "./actions/index.js":
+/*!**************************!*\
+  !*** ./actions/index.js ***!
+  \**************************/
+/*! exports provided: updateEmail */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _User__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./User */ "./actions/User.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "updateEmail", function() { return _User__WEBPACK_IMPORTED_MODULE_0__["updateEmail"]; });
+
+
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime-corejs2/core-js/json/stringify.js":
 /*!***********************************************************************!*\
   !*** ./node_modules/@babel/runtime-corejs2/core-js/json/stringify.js ***!
@@ -401,6 +455,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-redux */ "react-redux");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../actions */ "./actions/index.js");
 
 
 
@@ -408,6 +463,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _jsxFileName = "/Users/qinguan/Desktop/MasterFE/pages/index.js";
+
 
 
 
@@ -428,7 +484,7 @@ function (_Component) {
       return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 6
+          lineNumber: 7
         },
         __self: this
       }, _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0___default()(this.props));
@@ -438,9 +494,17 @@ function (_Component) {
   return IndexPage;
 }(react__WEBPACK_IMPORTED_MODULE_6__["Component"]);
 
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    updateEmail: function updateEmail(email) {
+      return dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_8__["updateEmail"])(email));
+    }
+  };
+};
+
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_7__["connect"])(function (state) {
   return state;
-})(IndexPage));
+}, mapDispatchToProps)(IndexPage));
 
 /***/ }),
 
