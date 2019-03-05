@@ -4,6 +4,7 @@ import App, { Container } from "next/app";
 import withRedux from "next-redux-wrapper";
 import { makeStore } from "../store";
 import Head from "next/head";
+import "./app.global.css";
 
 class MasterFE extends App {
   static async getInitialProps({ Component, ctx }) {
@@ -19,7 +20,11 @@ class MasterFE extends App {
     return (
       <Container>
         <Head>
-          <title>MasterFE</title>
+          <link
+            href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+            rel="stylesheet"
+          />
+          <title>Master</title>
         </Head>
         <Provider store={store}>
           <Component {...pageProps} />

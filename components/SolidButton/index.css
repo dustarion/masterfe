@@ -1,0 +1,21 @@
+.container {
+  height: 45px;
+  width: 200px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.container:hover {
+  box-shadow: 1px 1px 2px gray;
+}
+
+.text {
+  font-family: "Raleway", sans-serif;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 600;
+}

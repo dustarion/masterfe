@@ -1,18 +1,21 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { updateEmail } from "../actions";
+import Header from "../components/Header";
+import style from "./index.css";
+import axios from "axios";
 
 class IndexPage extends Component {
+  componentDidMount() {
+    axios
+      .post("http://localhost:8080/post", { omg: "damnnnnnn" })
+      .then(({ data }) => console.log(data));
+  }
   render() {
-    return <div>{JSON.stringify(this.props)}</div>;
+    return (
+      <div className={style.container}>
+        <Header />
+      </div>
+    );
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  updateEmail: email => dispatch(updateEmail(email))
-});
-
-export default connect(
-  state => state,
-  mapDispatchToProps
-)(IndexPage);
+export default IndexPage;

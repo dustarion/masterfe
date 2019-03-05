@@ -1,0 +1,21 @@
+.container {
+  height: 80px;
+  background: black;
+  display: flex;
+  align-items: center;
+}
+
+.logoIcon {
+  height: auto;
+  width: auto;
+  max-height: 50%;
+  object-fit: contain;
+  margin-left: 10vw;
+}
+
+.actionButtonContainer {
+  flex: 1;
+  margin-right: 10vw;
+  display: flex;
+  justify-content: flex-end;
+}
