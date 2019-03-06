@@ -35,6 +35,12 @@
       "publicPath": "static/chunks/styles.js"
     },
     {
+      "id": 7,
+      "name": null,
+      "file": "static/chunks/styles.js",
+      "publicPath": "static/chunks/styles.js"
+    },
+    {
       "id": 4,
       "name": null,
       "file": "static/chunks/styles.js",
@@ -51,6 +57,12 @@
     {
       "id": "./components/SolidButton/index.css",
       "name": "./components/SolidButton/index.css",
+      "file": "static/chunks/styles.js",
+      "publicPath": "static/chunks/styles.js"
+    },
+    {
+      "id": "./components/BorderedButton/index.css",
+      "name": "./components/BorderedButton/index.css",
       "file": "static/chunks/styles.js",
       "publicPath": "static/chunks/styles.js"
     },
