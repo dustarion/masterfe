@@ -162,7 +162,7 @@ function (_Component) {
         className: _index_css__WEBPACK_IMPORTED_MODULE_6___default.a.container,
         style: {
           background: this.props.color,
-          borderWidth: 1,
+          borderWidth: 2,
           borderColor: this.props.borderColor,
           borderStyle: "solid"
         },
@@ -173,6 +173,10 @@ function (_Component) {
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
         className: _index_css__WEBPACK_IMPORTED_MODULE_6___default.a.text,
+        style: {
+          marginLeft: this.props.size == "small" ? 30 : this.props.size == "medium" ? 40 : 50,
+          marginRight: this.props.size == "small" ? 30 : this.props.size == "medium" ? 40 : 50
+        },
         __source: {
           fileName: _jsxFileName,
           lineNumber: 18
@@ -199,7 +203,8 @@ function (_Component) {
 module.exports = {
 	"container": "container___3kwxs",
 	"logoIcon": "logoIcon___1xzgl",
-	"actionButtonContainer": "actionButtonContainer___1VWfy"
+	"actionButtonContainer": "actionButtonContainer___1VWfy",
+	"captionText": "captionText___1pL4u"
 };
 
 /***/ }),
@@ -224,12 +229,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _index_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_index_css__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _SolidButton__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../SolidButton */ "./components/SolidButton/index.js");
 /* harmony import */ var _BorderedButton__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../BorderedButton */ "./components/BorderedButton/index.js");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! next/router */ "./node_modules/next/router.js");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_10__);
 
 
 
 
 
 var _jsxFileName = "/Users/qinguan/Desktop/MasterFE/components/Header/index.js";
+
+
 
 
 
@@ -247,13 +258,85 @@ function (_Component) {
   }
 
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(Header, [{
+    key: "buttons",
+    value: function buttons() {
+      switch (this.props.router.pathname) {
+        case "/":
+          return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+            className: _index_css__WEBPACK_IMPORTED_MODULE_6___default.a.actionButtonContainer,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 13
+            },
+            __self: this
+          }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_SolidButton__WEBPACK_IMPORTED_MODULE_7__["default"], {
+            color: "#ff0039",
+            text: "sign up",
+            href: "/login",
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 14
+            },
+            __self: this
+          }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_BorderedButton__WEBPACK_IMPORTED_MODULE_8__["default"], {
+            color: "black",
+            text: "sign up",
+            href: "/login",
+            borderColor: "#ff0039",
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 15
+            },
+            __self: this
+          }));
+
+        case "/login":
+          return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+            className: _index_css__WEBPACK_IMPORTED_MODULE_6___default.a.actionButtonContainer,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 25
+            },
+            __self: this
+          }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
+            className: _index_css__WEBPACK_IMPORTED_MODULE_6___default.a.captionText,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 26
+            },
+            __self: this
+          }, "Already have an account?"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_BorderedButton__WEBPACK_IMPORTED_MODULE_8__["default"], {
+            color: "black",
+            text: "sign up",
+            href: "/signup",
+            borderColor: "#ff0039",
+            size: "medium",
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 27
+            },
+            __self: this
+          }));
+
+        default:
+          return null;
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: _index_css__WEBPACK_IMPORTED_MODULE_6___default.a.container,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 9
+          lineNumber: 42
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_10___default.a, {
+        href: "/",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 43
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("img", {
@@ -261,43 +344,17 @@ function (_Component) {
         className: _index_css__WEBPACK_IMPORTED_MODULE_6___default.a.logoIcon,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 10
+          lineNumber: 44
         },
         __self: this
-      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        className: _index_css__WEBPACK_IMPORTED_MODULE_6___default.a.actionButtonContainer,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 11
-        },
-        __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_SolidButton__WEBPACK_IMPORTED_MODULE_7__["default"], {
-        color: "#ff0039",
-        text: "sign up",
-        href: "/login",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 12
-        },
-        __self: this
-      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_BorderedButton__WEBPACK_IMPORTED_MODULE_8__["default"], {
-        color: "#ff0039",
-        text: "sign up",
-        href: "/login",
-        borderColor: "white",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 13
-        },
-        __self: this
-      })));
+      })), this.buttons());
     }
   }]);
 
   return Header;
 }(react__WEBPACK_IMPORTED_MODULE_5__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (Header);
+/* harmony default export */ __webpack_exports__["default"] = (Object(next_router__WEBPACK_IMPORTED_MODULE_9__["withRouter"])(Header));
 
 /***/ }),
 
@@ -378,6 +435,10 @@ function (_Component) {
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
         className: _index_css__WEBPACK_IMPORTED_MODULE_6___default.a.text,
+        style: {
+          marginLeft: this.props.size == "small" ? 30 : this.props.size == "medium" ? 40 : 50,
+          marginRight: this.props.size == "small" ? 30 : this.props.size == "medium" ? 40 : 50
+        },
         __source: {
           fileName: _jsxFileName,
           lineNumber: 13

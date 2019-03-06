@@ -10,12 +10,30 @@ class BorderedButton extends Component {
           className={style.container}
           style={{
             background: this.props.color,
-            borderWidth: 1,
+            borderWidth: 2,
             borderColor: this.props.borderColor,
             borderStyle: "solid"
           }}
         >
-          <span className={style.text}>{this.props.text}</span>
+          <span
+            className={style.text}
+            style={{
+              marginLeft:
+                this.props.size == "small"
+                  ? 30
+                  : this.props.size == "medium"
+                  ? 40
+                  : 50,
+              marginRight:
+                this.props.size == "small"
+                  ? 30
+                  : this.props.size == "medium"
+                  ? 40
+                  : 50
+            }}
+          >
+            {this.props.text}
+          </span>
         </div>
       </Link>
     );

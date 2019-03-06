@@ -1,6 +1,5 @@
 .container {
-  height: 45px;
-  width: 200px;
+  height: 41px;
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -19,5 +18,4 @@
   font-family: "Raleway", sans-serif;
   color: white;
   text-transform: uppercase;
-  font-weight: 600;
 }

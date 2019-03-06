@@ -18,4 +18,12 @@
   margin-right: 10vw;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
+}
+
+.captionText {
+  color: gray;
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+  margin: 15px;
 }
