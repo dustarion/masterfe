@@ -11,10 +11,10 @@ class Header extends Component {
       case "/":
         return (
           <div className={style.actionButtonContainer}>
-            <SolidButton color="#ff0039" text="sign up" href="/login" />
+            <SolidButton color="#ff0039" text="sign up" href="/signup" />
             <BorderedButton
               color="black"
-              text="sign up"
+              text="login"
               href="/login"
               borderColor="#ff0039"
             />

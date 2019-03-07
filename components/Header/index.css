@@ -11,6 +11,7 @@
   max-height: 50%;
   object-fit: contain;
   margin-left: 10vw;
+  cursor: pointer;
 }
 
 .actionButtonContainer {

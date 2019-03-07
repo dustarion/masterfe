@@ -1,0 +1,14 @@
+.bgDiv {
+  width: 100vw;
+  position: absolute;
+  opacity: 0.4;
+  top: 80px;
+  bottom: 0;
+}
+
+.bgImg {
+  height: 100%;
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}

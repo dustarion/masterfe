@@ -23,13 +23,13 @@
       "publicPath": "static/chunks/styles.js"
     },
     {
-      "id": 6,
+      "id": 3,
       "name": null,
       "file": "static/chunks/styles.js",
       "publicPath": "static/chunks/styles.js"
     },
     {
-      "id": 3,
+      "id": 4,
       "name": null,
       "file": "static/chunks/styles.js",
       "publicPath": "static/chunks/styles.js"
@@ -41,13 +41,13 @@
       "publicPath": "static/chunks/styles.js"
     },
     {
-      "id": 7,
+      "id": 6,
       "name": null,
       "file": "static/chunks/styles.js",
       "publicPath": "static/chunks/styles.js"
     },
     {
-      "id": 4,
+      "id": 7,
       "name": null,
       "file": "static/chunks/styles.js",
       "publicPath": "static/chunks/styles.js"
@@ -81,8 +81,8 @@
       "publicPath": "static/chunks/styles.js"
     },
     {
-      "id": "./pages/index.css",
-      "name": "./pages/index.css",
+      "id": "./components/BG/index.css",
+      "name": "./components/BG/index.css",
       "file": "static/chunks/styles.js",
       "publicPath": "static/chunks/styles.js"
     }

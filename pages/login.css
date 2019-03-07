@@ -1,4 +1,11 @@
 .container {
-  background: #212121;
+  background: black;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.contentWrapper {
+  z-index: 1;
+  display: flex;
 }
