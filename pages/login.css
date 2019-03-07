@@ -8,4 +8,26 @@
 .contentWrapper {
   z-index: 1;
   display: flex;
+  height: 100%;
+}
+
+.sideLeft {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.h1login {
+  font-family: "Montserrat", sans-serif;
+  color: white;
+  font-size: 3em;
+  margin: 0;
+}
+
+.h3login {
+  font-family: "Raleway", sans-serif;
+  color: white;
+  opacity: 0.5;
 }
