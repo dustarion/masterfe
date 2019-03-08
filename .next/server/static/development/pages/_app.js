@@ -97,16 +97,18 @@ module.exports =
 /*!**********************!*\
   !*** ./Constants.js ***!
   \**********************/
-/*! exports provided: redux */
+/*! exports provided: redux, BACKEND_URL */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "redux", function() { return redux; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BACKEND_URL", function() { return BACKEND_URL; });
 var redux = {
   USER_EMAIL: "useremail",
   RESET_ALL: "resetall"
 };
+var BACKEND_URL = "http://localhost:8080";
 
 /***/ }),
 

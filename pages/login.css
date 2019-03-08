@@ -15,8 +15,6 @@
   flex: 1;
   display: flex;
   justify-content: center;
-  align-items: center;
-  flex-direction: column;
 }
 
 .h1login {
@@ -30,4 +28,13 @@
   font-family: "Raleway", sans-serif;
   color: white;
   opacity: 0.5;
+}
+
+.contentLeft {
+  width: 100%;
+  padding-left: 10vw;
+  padding-right: 10vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

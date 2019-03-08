@@ -4,10 +4,15 @@ import style from "./index.css";
 class TextInput extends Component {
   render() {
     return (
-      <div>
+      <div style={{ marginTop: 15 }}>
         <input
           className={style.input}
-          placeholder="Email"
+          placeholder={
+            this.props.placeholder == null || undefined
+              ? "Error"
+              : this.props.placeholder
+          }
+          type={this.props.password ? "password" : "text"}
           onChange={x => {
             try {
               this.props.onChangeText(x.target.value);
