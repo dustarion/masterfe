@@ -9,7 +9,11 @@ class TextInput extends Component {
           className={style.input}
           placeholder="Email"
           onChange={x => {
-            console.log(x.target.value);
+            try {
+              this.props.onChangeText(x.target.value);
+            } catch (error) {
+              console.log(error);
+            }
           }}
         />
       </div>
