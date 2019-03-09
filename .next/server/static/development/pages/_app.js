@@ -1475,7 +1475,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _jsxFileName = "/Users/qinguan/Desktop/MasterFE/pages/_app.js";
+var _jsxFileName = "/Users/daltonprescott/Documents/Master/masterfe/pages/_app.js";
 
 
 

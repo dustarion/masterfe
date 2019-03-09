@@ -23,6 +23,12 @@
       "publicPath": "static/chunks/styles.js"
     },
     {
+      "id": 7,
+      "name": null,
+      "file": "static/chunks/styles.js",
+      "publicPath": "static/chunks/styles.js"
+    },
+    {
       "id": 3,
       "name": null,
       "file": "static/chunks/styles.js",
@@ -41,28 +47,22 @@
       "publicPath": "static/chunks/styles.js"
     },
     {
-      "id": 6,
-      "name": null,
-      "file": "static/chunks/styles.js",
-      "publicPath": "static/chunks/styles.js"
-    },
-    {
-      "id": 7,
-      "name": null,
-      "file": "static/chunks/styles.js",
-      "publicPath": "static/chunks/styles.js"
-    },
-    {
       "id": 8,
+      "name": null,
+      "file": "static/chunks/styles.js",
+      "publicPath": "static/chunks/styles.js"
+    },
+    {
+      "id": 9,
       "name": null,
       "file": "static/chunks/styles.js",
       "publicPath": "static/chunks/styles.js"
     }
   ],
-  "./login.css": [
+  "./cockpit.css": [
     {
-      "id": "./pages/login.css",
-      "name": "./pages/login.css",
+      "id": "./pages/cockpit.css",
+      "name": "./pages/cockpit.css",
       "file": "static/chunks/styles.js",
       "publicPath": "static/chunks/styles.js"
     }
@@ -87,14 +87,14 @@
       "publicPath": "static/chunks/styles.js"
     },
     {
-      "id": "./components/BG/index.css",
-      "name": "./components/BG/index.css",
+      "id": "./components/TestCard/index.css",
+      "name": "./components/TestCard/index.css",
       "file": "static/chunks/styles.js",
       "publicPath": "static/chunks/styles.js"
     },
     {
-      "id": "./components/TextInput/index.css",
-      "name": "./components/TextInput/index.css",
+      "id": "./components/CockpitTestInput/index.css",
+      "name": "./components/CockpitTestInput/index.css",
       "file": "static/chunks/styles.js",
       "publicPath": "static/chunks/styles.js"
     }
