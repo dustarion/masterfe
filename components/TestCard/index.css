@@ -20,3 +20,9 @@
   text-align: center;
   font-family: "Montserrat", Helvetica, Arial, sans-serif;
 }
+
+.inputArea {
+  display: flex;
+  padding-right: 20px;
+}
+

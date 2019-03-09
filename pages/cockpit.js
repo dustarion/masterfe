@@ -8,14 +8,17 @@ class CockpitPage extends Component {
     //     test: "",
     // };
 
+
+
     render() {
         return (
-
             <div className={style.container}>
             <Header />
                 <div className={style.contentWrapper}>
                     <div className={style.centercard}>
-                        <TestCard/>
+                        <TestCard
+                            q="test"
+                        />
                     </div>
                 </div>
             </div>

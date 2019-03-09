@@ -11,9 +11,15 @@
   color: white;
   background: transparent;
   border: 0;
-  border-bottom: 5px solid gray;
+  border-bottom: 3px solid gray;
   font-size: 1.2em;
   font-family: "Lato", sans-serif;
+  transition: 0.5s;
+}
+
+.textInput:focus {
+    outline: none !important;
+    border-bottom-color: aqua;
 }
 
 .subText {
@@ -22,18 +28,3 @@
   text-transform: uppercase;
   margin-top: 10px;
 }
-/* 
-.textInput ~ .focus-border{
-    position: absolute; 
-    bottom: 0; 
-    left: 0; 
-    width: 0; 
-    height: 2px; 
-    background-color: #3399FF; 
-    transition: 0.4s;
-}
-
-.textInput:focus ~ .focus-border{
-    width: 100%; 
-    transition: 0.4s;
-} */
