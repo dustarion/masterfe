@@ -1,0 +1,9 @@
+.container {
+    background: black;
+    width: 20vw;
+    height: 20vh;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    filter: drop-shadow(0 0 2rem #121212);
+}
