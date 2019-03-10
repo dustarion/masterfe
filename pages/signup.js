@@ -1,47 +1,33 @@
 import React, { Component } from "react";
-import style from "./login.css";
+import style from "./signup.css";
 import Header from "../components/Header";
 import BG from "../components/BG";
 import TextInput from "../components/TextInput";
 import SolidButton from "../components/SolidButton";
-import axios from "axios";
-import { BACKEND_URL } from "../Constants";
-import firebase from "firebase";
-import Router from "next/router";
+import validator from "validator";
 
-class LoginPage extends Component {
+class SignUpPage extends Component {
   state = {
     email: "",
-    password: ""
+    password: "",
+    cfmPass: ""
   };
 
-  initLogin() {
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(this.state.email, this.state.password)
-      .then(x => {
-        axios
-          .post(BACKEND_URL + "/localSignIn", {
-            uid: x.user.uid,
-            e: x.user.email
-          })
-          .then(({ data }) => {
-            if (data.error) {
-              return alert(data.msg);
-            }
-            localStorage.setItem("token", data);
-            Router.push("/dashboard");
-          });
-      })
-      .catch(err => {
-        alert("An error occurred");
-      });
-  }
-
-  componentDidMount() {
-    const token = localStorage.getItem("token");
-    if (token) {
-      Router.push("/dashboard");
+  initSignUp() {
+    const email = this.state.email;
+    const pass = this.state.password;
+    const cfmpass = this.state.cfmPass;
+    if (!validator.isEmail(email)) {
+      alert("not an email");
+      return;
+    }
+    if (!validator.isLength(pass, { min: 6 })) {
+      alert("password has to be min 6 char");
+      return;
+    }
+    if (pass != cfmpass) {
+      alert("pass and cfm not same");
+      return;
     }
   }
 
@@ -53,8 +39,8 @@ class LoginPage extends Component {
         <div className={style.contentWrapper}>
           <div className={style.sideLeft}>
             <div className={style.contentLeft}>
-              <h1 className={style.h1login}>Login</h1>
-              <h3 className={style.h3login}>Sign in with your email.</h3>
+              <h1 className={style.h1login}>Sign up</h1>
+              <h3 className={style.h3login}>Sign up with your email.</h3>
               <div>
                 <TextInput
                   placeholder="Email"
@@ -71,7 +57,18 @@ class LoginPage extends Component {
                   }}
                   id="password"
                   onReturn={() => {
-                    this.initLogin();
+                    this.initSignUp();
+                  }}
+                />
+                <TextInput
+                  placeholder="Confirm Password"
+                  password={true}
+                  onChangeText={text => {
+                    this.setState({ cfmPass: text });
+                  }}
+                  id="cfmPass"
+                  onReturn={() => {
+                    this.initSignUp();
                   }}
                 />
                 <div
@@ -80,7 +77,7 @@ class LoginPage extends Component {
                   <SolidButton
                     color="#ff0039"
                     text="continue"
-                    onClick={() => this.initLogin()}
+                    onClick={() => this.initSignUp()}
                   />
                 </div>
               </div>
@@ -93,4 +90,4 @@ class LoginPage extends Component {
   }
 }
 
-export default LoginPage;
+export default SignUpPage;

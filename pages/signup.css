@@ -1,0 +1,40 @@
+.container {
+  background: black;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.contentWrapper {
+  z-index: 1;
+  display: flex;
+  height: 100%;
+}
+
+.sideLeft {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.h1login {
+  font-family: "Montserrat", sans-serif;
+  color: white;
+  font-size: 3em;
+  margin: 0;
+}
+
+.h3login {
+  font-family: "Raleway", sans-serif;
+  color: white;
+  opacity: 0.5;
+}
+
+.contentLeft {
+  width: 100%;
+  padding-left: 10vw;
+  padding-right: 10vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

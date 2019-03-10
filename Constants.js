@@ -3,4 +3,4 @@ export const redux = {
   RESET_ALL: "resetall"
 };
 
-export const BACKEND_URL = "http://localhost:8080";
+export const BACKEND_URL = "https://806ce9e6.ngrok.io";

@@ -29,11 +29,25 @@ class Header extends Component {
       case "/login":
         return (
           <div className={style.actionButtonContainer}>
-            <span className={style.captionText}>Already have an account?</span>
+            <span className={style.captionText}>Don't have an account?</span>
             <BorderedButton
               color="black"
               text="sign up"
               href="/signup"
+              borderColor="#ff0039"
+              size="medium"
+              shadow={true}
+            />
+          </div>
+        );
+      case "/signup":
+        return (
+          <div className={style.actionButtonContainer}>
+            <span className={style.captionText}>Already have an account?</span>
+            <BorderedButton
+              color="black"
+              text="login"
+              href="/login"
               borderColor="#ff0039"
               size="medium"
               shadow={true}

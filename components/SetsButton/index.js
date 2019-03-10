@@ -6,7 +6,7 @@ class FolderButton extends Component {
     return (
       <div className={style.container}>
         {/* <img src="/static/FolderIcon.png" className={style.folderIcon} /> */}
-        <span className={style.gradientLeftBar}></span>
+        <span className={style.gradientLeftBar} />
         <span className={style.name}>
           {this.props.title == undefined || null ? "Error" : this.props.title}
         </span>
