@@ -2,10 +2,21 @@ import React, { Component } from "react";
 import style from "./index.css";
 
 class TextInput extends Component {
+  componentDidMount() {
+    const field = document.getElementById(this.props.id);
+    field.addEventListener("keydown", e => {
+      if (e.keyCode === 13) {
+        if (typeof this.props.onReturn === "function") {
+          this.props.onReturn();
+        }
+      }
+    });
+  }
   render() {
     return (
       <div style={{ marginTop: 15 }}>
         <input
+          id={this.props.id}
           className={style.input}
           placeholder={
             this.props.placeholder == null || undefined

@@ -19,7 +19,7 @@ class Header extends Component {
             />
             <BorderedButton
               color="black"
-              text="login"
+              text="Login"
               href="/login"
               borderColor="#ff0039"
               shadow={true}

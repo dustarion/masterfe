@@ -15,8 +15,8 @@ class BorderedButton extends Component {
           style={{
             background: this.props.color,
             boxShadow: this.state.shadow,
-            borderWidth: 2,
             borderColor: this.props.borderColor,
+            borderWidth: 2,
             borderStyle: "solid"
           }}
           onMouseEnter={() => {
@@ -65,8 +65,8 @@ class BorderedButton extends Component {
             style={{
               background: this.props.color,
               boxShadow: this.state.shadow,
-              borderWidth: 2,
               borderColor: this.props.borderColor,
+              borderWidth: 2,
               borderStyle: "solid"
             }}
             onMouseEnter={() => {
