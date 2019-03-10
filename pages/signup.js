@@ -5,16 +5,40 @@ import BG from "../components/BG";
 import TextInput from "../components/TextInput";
 import SolidButton from "../components/SolidButton";
 import validator from "validator";
-import axios from "axios";
-import { BACKEND_URL } from "../Constants";
+import { useSpring, animated } from "react-spring";
 import firebase from "firebase";
+
+function Error(gProps) {
+  const hasError = gProps.error.length > 0 ? true : false;
+  const props = useSpring({
+    opacity: hasError ? 1 : 0,
+    height: hasError ? 20 : 0,
+    from: { opacity: hasError ? 0 : 1, height: hasError ? 0 : 20 }
+  });
+  return (
+    <animated.div
+      style={{
+        ...props,
+        margin: 15,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center"
+      }}
+    >
+      <span style={{ color: "red", fontFamily: "Lato", fontSize: 20 }}>
+        {gProps.error}
+      </span>
+    </animated.div>
+  );
+}
 
 class SignUpPage extends Component {
   state = {
     email: "",
     password: "",
     cfmPass: "",
-    name: ""
+    name: "",
+    error: ""
   };
 
   initSignUp() {
@@ -23,19 +47,21 @@ class SignUpPage extends Component {
     const cfmpass = this.state.cfmPass;
     const name = this.state.name;
     if (!validator.isEmail(email)) {
-      alert("not an email");
+      this.setState({ error: "Please enter a valid email" });
       return;
     }
     if (!validator.isLength(name, { min: 1 })) {
-      alert("name cannot be empty");
+      this.setState({ error: "Please enter a valid name" });
       return;
     }
     if (!validator.isLength(pass, { min: 6 })) {
-      alert("password has to be min 6 char");
+      this.setState({
+        error: "Please enter a password that is longer than 6 characters"
+      });
       return;
     }
     if (pass != cfmpass) {
-      alert("pass and cfm not same");
+      this.setState({ error: "Confirm password is not the same as password" });
       return;
     }
     firebase
@@ -61,7 +87,7 @@ class SignUpPage extends Component {
           });
       })
       .catch(err => {
-        console.log(err);
+        this.setState({ error: JSON.stringify(err) });
       });
   }
 
@@ -80,6 +106,7 @@ class SignUpPage extends Component {
                   placeholder="Email"
                   onChangeText={text => {
                     this.setState({ email: text });
+                    this.setState({ error: "" });
                   }}
                   id="email"
                 />
@@ -87,6 +114,7 @@ class SignUpPage extends Component {
                   placeholder="Name"
                   onChangeText={text => {
                     this.setState({ name: text });
+                    this.setState({ error: "" });
                   }}
                   id="name"
                 />
@@ -95,6 +123,7 @@ class SignUpPage extends Component {
                   password={true}
                   onChangeText={text => {
                     this.setState({ password: text });
+                    this.setState({ error: "" });
                   }}
                   id="password"
                 />
@@ -103,12 +132,14 @@ class SignUpPage extends Component {
                   password={true}
                   onChangeText={text => {
                     this.setState({ cfmPass: text });
+                    this.setState({ error: "" });
                   }}
                   id="cfmPass"
                   onReturn={() => {
                     this.initSignUp();
                   }}
                 />
+                <Error error={this.state.error} />
                 <div
                   style={{ marginTop: 30, marginLeft: -10, marginRight: -10 }}
                 >
