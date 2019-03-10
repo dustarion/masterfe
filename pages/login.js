@@ -6,6 +6,7 @@ import TextInput from "../components/TextInput";
 import SolidButton from "../components/SolidButton";
 import axios from "axios";
 import { BACKEND_URL } from "../Constants";
+import firebase from "firebase";
 
 class LoginPage extends Component {
   state = {
@@ -14,12 +15,14 @@ class LoginPage extends Component {
   };
 
   initLogin() {
-    const email = btoa(this.state.email);
-    const password = btoa(this.state.password);
-    axios
-      .post(BACKEND_URL + "/llcllogin", { e: email, p: password })
-      .then(({ data }) => {
-        console.log(data);
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(this.state.email, this.state.password)
+      .then(x => {
+        console.log(x);
+      })
+      .catch(err => {
+        alert("An error occurred");
       });
   }
 
@@ -39,12 +42,17 @@ class LoginPage extends Component {
                   onChangeText={text => {
                     this.setState({ email: text });
                   }}
+                  id="email"
                 />
                 <TextInput
                   placeholder="Password"
                   password={true}
                   onChangeText={text => {
                     this.setState({ password: text });
+                  }}
+                  id="password"
+                  onReturn={() => {
+                    this.initLogin();
                   }}
                 />
                 <div
