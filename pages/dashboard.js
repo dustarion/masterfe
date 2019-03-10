@@ -9,7 +9,7 @@ class DashboardPage extends Component {
       <div className={style.container}>
         <Header />
         <div className={style.menucard}>
-            <DashboardNavCard/>
+            hello
         </div>
       </div>
     );
