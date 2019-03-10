@@ -5,7 +5,8 @@ class FolderButton extends Component {
     render() {
         return(
             <div className={style.container}>
-                <span className={style.name}>Rocket Science</span>
+                <img src="/static/FolderIcon.png" className={style.folderIcon}/>
+                <span className={style.name}>Rocket </span>
             </div>
         );
     }

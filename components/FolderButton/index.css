@@ -1,12 +1,16 @@
 .container {
     background: white;
-    /* width: 100%; */
-    padding: 10px;
-    /* height: 10px; Change for Final */
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
 }
 
 .folderIcon {
-    
+    height: 50px;
+    width: 50px;
+    object-fit: contain;
+    margin-right: 20px;
 }
 
 .name {

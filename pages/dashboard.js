@@ -9,7 +9,7 @@ class DashboardPage extends Component {
       <div className={style.container}>
         <Header />
         <div className={style.folderCard}>
-            <span className={style.headerText}>Folders</span>\
+            <span className={style.headerText}>Folders</span>
             <FolderButton />
         </div>
       </div>
