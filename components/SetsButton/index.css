@@ -1,6 +1,6 @@
 .container {
   background: white;
-  padding: 20px;
+  /* padding: 20px; */
   display: flex;
   align-items: center;
   border-radius: 10px;
@@ -9,14 +9,25 @@
   margin-bottom: 10px;
 }
 
-.folderIcon {
+.gradientLeftBar {
+  background: gold; /*gradient this shit*/
+  background-image: linear-gradient(red, yellow);
+  height: 100%;
+  min-width: 15px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+
+/* .folderIcon {
   height: 50px;
   width: 50px;
   object-fit: contain;
   margin-right: 20px;
-}
+} */
 
 .name {
+  padding: 20px;
   font-size: 1.5em;
   font-family: "Montserrat", Helvetica, Arial, sans-serif;
   font-weight: 400;
