@@ -19,8 +19,7 @@ class LoginPage extends Component {
     axios
       .post(BACKEND_URL + "/llcllogin", { e: email, p: password })
       .then(({ data }) => {
-        if (data.error) {
-        }
+        console.log(data);
       });
   }
 
