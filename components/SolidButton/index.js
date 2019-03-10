@@ -14,7 +14,7 @@ class SolidButton extends Component {
           onClick={() => this.props.onClick()}
           style={{
             background: this.props.color,
-            "box-shadow": this.state.shadow
+            boxShadow: this.state.shadow
           }}
           onMouseEnter={() => {
             if (this.props.shadow) {
@@ -61,7 +61,7 @@ class SolidButton extends Component {
             className={style.container}
             style={{
               background: this.props.color,
-              "box-shadow": this.state.shadow
+              boxShadow: this.state.shadow
             }}
             onMouseEnter={() => {
               if (this.props.shadow) {

@@ -14,7 +14,7 @@ class BorderedButton extends Component {
           onClick={() => this.props.onClick()}
           style={{
             background: this.props.color,
-            "box-shadow": this.state.shadow,
+            boxShadow: this.state.shadow,
             borderWidth: 2,
             borderColor: this.props.borderColor,
             borderStyle: "solid"
@@ -64,7 +64,7 @@ class BorderedButton extends Component {
             className={style.container}
             style={{
               background: this.props.color,
-              "box-shadow": this.state.shadow,
+              boxShadow: this.state.shadow,
               borderWidth: 2,
               borderColor: this.props.borderColor,
               borderStyle: "solid"
