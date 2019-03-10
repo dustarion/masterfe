@@ -31,4 +31,12 @@
   font-size: 1.5em;
   font-family: "Montserrat", Helvetica, Arial, sans-serif;
   font-weight: 400;
+  flex: 1;
+}
+
+.progressText {
+  text-align: right;
+  font-size: 1.2em;
+  font-family: "Montserrat", Helvetica, Arial, sans-serif;
+  font-weight: 600;
 }
