@@ -5,6 +5,7 @@ import withRedux from "next-redux-wrapper";
 import { makeStore } from "../store";
 import Head from "next/head";
 import "./app.global.css";
+import firebase from "firebase";
 
 class MasterFE extends App {
   static async getInitialProps({ Component, ctx }) {
@@ -13,6 +14,18 @@ class MasterFE extends App {
       : {};
 
     return { pageProps };
+  }
+
+  componentDidMount() {
+    var config = {
+      apiKey: "AIzaSyAcYSb9fvk2vUiRhavsKlrcrpnyFKtzXTQ",
+      authDomain: "master-eb220.firebaseapp.com",
+      databaseURL: "https://master-eb220.firebaseio.com",
+      projectId: "master-eb220",
+      storageBucket: "master-eb220.appspot.com",
+      messagingSenderId: "1086655103908"
+    };
+    firebase.initializeApp(config);
   }
 
   render() {
