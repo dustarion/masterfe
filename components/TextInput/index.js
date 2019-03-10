@@ -16,6 +16,9 @@ class TextInput extends Component {
     return (
       <div style={{ marginTop: 15 }}>
         <input
+          value={
+            typeof this.props.value === "string" ? this.props.value : undefined
+          }
           id={this.props.id}
           className={style.input}
           placeholder={

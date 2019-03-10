@@ -15,23 +15,44 @@ class LoginPage extends Component {
     password: ""
   };
 
+  static getInitialProps({ query }) {
+    return { query };
+  }
+
   initLogin() {
     firebase
       .auth()
       .signInWithEmailAndPassword(this.state.email, this.state.password)
       .then(x => {
-        axios
-          .post(BACKEND_URL + "/localSignIn", {
-            uid: x.user.uid,
-            e: x.user.email
-          })
-          .then(({ data }) => {
-            if (data.error) {
-              return alert(data.msg);
-            }
-            localStorage.setItem("token", data);
-            Router.push("/dashboard");
-          });
+        if (this.props.query.fsu) {
+          axios
+            .post(BACKEND_URL + "/redirectSignUp", {
+              uid: x.user.uid,
+              e: x.user.email,
+              n: this.props.query.n
+            })
+            .then(({ data }) => {
+              if (data.error) {
+                return alert(data.msg);
+              }
+              localStorage.setItem("token", data.token);
+              localStorage.setItem("pfp", data.pfp);
+            });
+        } else {
+          axios
+            .post(BACKEND_URL + "/localSignIn", {
+              uid: x.user.uid,
+              e: x.user.email
+            })
+            .then(({ data }) => {
+              if (data.error) {
+                return alert(data.msg);
+              }
+              localStorage.setItem("token", data.token);
+              localStorage.setItem("pfp", data.pfp);
+              Router.push("/dashboard");
+            });
+        }
       })
       .catch(err => {
         alert("An error occurred");
@@ -40,6 +61,9 @@ class LoginPage extends Component {
 
   componentDidMount() {
     const token = localStorage.getItem("token");
+    if (this.props.query.e != undefined || null) {
+      this.setState({ email: this.props.query.e });
+    }
     if (token) {
       Router.push("/dashboard");
     }
@@ -61,6 +85,7 @@ class LoginPage extends Component {
                   onChangeText={text => {
                     this.setState({ email: text });
                   }}
+                  value={this.props.query.fsu ? this.props.query.e : undefined}
                   id="email"
                 />
                 <TextInput

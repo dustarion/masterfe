@@ -5,20 +5,29 @@ import BG from "../components/BG";
 import TextInput from "../components/TextInput";
 import SolidButton from "../components/SolidButton";
 import validator from "validator";
+import axios from "axios";
+import { BACKEND_URL } from "../Constants";
+import firebase from "firebase";
 
 class SignUpPage extends Component {
   state = {
     email: "",
     password: "",
-    cfmPass: ""
+    cfmPass: "",
+    name: ""
   };
 
   initSignUp() {
     const email = this.state.email;
     const pass = this.state.password;
     const cfmpass = this.state.cfmPass;
+    const name = this.state.name;
     if (!validator.isEmail(email)) {
       alert("not an email");
+      return;
+    }
+    if (!validator.isLength(name, { min: 1 })) {
+      alert("name cannot be empty");
       return;
     }
     if (!validator.isLength(pass, { min: 6 })) {
@@ -29,6 +38,31 @@ class SignUpPage extends Component {
       alert("pass and cfm not same");
       return;
     }
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, pass)
+      .then(() => {
+        firebase
+          .auth()
+          .signInWithEmailAndPassword(email, pass)
+          .then(() => {
+            firebase
+              .auth()
+              .currentUser.sendEmailVerification({
+                url:
+                  "http://localhost:3080/login?n=" +
+                  name +
+                  "&fsu=true&e=" +
+                  email
+              })
+              .then(() => {
+                alert("email sent");
+              });
+          });
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   render() {
@@ -50,15 +84,20 @@ class SignUpPage extends Component {
                   id="email"
                 />
                 <TextInput
+                  placeholder="Name"
+                  password={true}
+                  onChangeText={text => {
+                    this.setState({ name: text });
+                  }}
+                  id="name"
+                />
+                <TextInput
                   placeholder="Password"
                   password={true}
                   onChangeText={text => {
                     this.setState({ password: text });
                   }}
                   id="password"
-                  onReturn={() => {
-                    this.initSignUp();
-                  }}
                 />
                 <TextInput
                   placeholder="Confirm Password"
