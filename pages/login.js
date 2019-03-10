@@ -8,11 +8,38 @@ import axios from "axios";
 import { BACKEND_URL } from "../Constants";
 import firebase from "firebase";
 import Router from "next/router";
+import { useSpring, animated } from "react-spring";
+import validator from "validator";
+
+function Error(gProps) {
+  const hasError = gProps.error.length > 0 ? true : false;
+  const props = useSpring({
+    opacity: hasError ? 1 : 0,
+    height: hasError ? 20 : 0,
+    from: { opacity: hasError ? 0 : 1, height: hasError ? 0 : 20 }
+  });
+  return (
+    <animated.div
+      style={{
+        ...props,
+        margin: 15,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center"
+      }}
+    >
+      <span style={{ color: "red", fontFamily: "Lato", fontSize: 20 }}>
+        {gProps.error}
+      </span>
+    </animated.div>
+  );
+}
 
 class LoginPage extends Component {
   state = {
     email: "",
-    password: ""
+    password: "",
+    error: ""
   };
 
   static getInitialProps({ query }) {
@@ -20,9 +47,21 @@ class LoginPage extends Component {
   }
 
   initLogin() {
+    const email = this.state.email;
+    const pass = this.state.password;
+    if (!validator.isEmail(email)) {
+      this.setState({ error: "Please enter a valid email" });
+      return;
+    }
+    if (!validator.isLength(pass, { min: 6 })) {
+      this.setState({
+        error: "Please enter a password that is longer than 6 characters"
+      });
+      return;
+    }
     firebase
       .auth()
-      .signInWithEmailAndPassword(this.state.email, this.state.password)
+      .signInWithEmailAndPassword(email, pass)
       .then(x => {
         if (this.props.query.fsu) {
           axios
@@ -33,11 +72,14 @@ class LoginPage extends Component {
             })
             .then(({ data }) => {
               if (data.error) {
-                return alert(data.msg);
+                return this.setState({ error: data.msg });
               }
               localStorage.setItem("token", data.token);
               localStorage.setItem("pfp", data.pfp);
               Router.push("/dashboard");
+            })
+            .catch(error => {
+              this.setState({ error: "An error occurred" });
             });
         } else {
           axios
@@ -47,16 +89,19 @@ class LoginPage extends Component {
             })
             .then(({ data }) => {
               if (data.error) {
-                return alert(data.msg);
+                return this.setState({ error: data.msg });
               }
               localStorage.setItem("token", data.token);
               localStorage.setItem("pfp", data.pfp);
               Router.push("/dashboard");
+            })
+            .catch(error => {
+              this.setState({ error: "An error occurred" });
             });
         }
       })
       .catch(err => {
-        alert("An error occurred");
+        this.setState({ error: "An error occurred" });
       });
   }
 
@@ -101,6 +146,7 @@ class LoginPage extends Component {
                     this.initLogin();
                   }}
                 />
+                <Error error={this.state.error} />
                 <div
                   style={{ marginTop: 30, marginLeft: -10, marginRight: -10 }}
                 >
