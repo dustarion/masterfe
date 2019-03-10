@@ -1,0 +1,16 @@
+.container {
+    background: white;
+    /* width: 100%; */
+    padding: 10px;
+    /* height: 10px; Change for Final */
+}
+
+.folderIcon {
+    
+}
+
+.name {
+    font-size: 1.5em;
+    font-family: "Montserrat", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+}

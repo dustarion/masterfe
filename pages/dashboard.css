@@ -1,17 +1,26 @@
 .container {
     width: 100%;
-    height: 100vh;
+    height: 100vh; /*Change Me*/
     background-color: #212121;
 }
 
-.menucard {
+.folderCard {
     margin-top: 100px;
-    margin-left: 100px;
+    margin-left: 10vw;
+    padding: 20px;
     background: black;
-    width: 20vw;
-    height: 20vh;
+    width: calc(30vw - 20px);
+    height: 600px;
     border-radius: 10px;
     display: flex;
-    /* flex-direction: column; */
-    /* filter: drop-shadow(0 0 2rem #121212); */
+    flex-direction: column;
+    filter: drop-shadow(0 0 2rem black);
+}
+
+.headerText {
+    text-transform: uppercase;
+    font-size: 1.5em;
+    font-family: "Montserrat", Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    color: white;
 }
