@@ -85,7 +85,6 @@ class SignUpPage extends Component {
                 />
                 <TextInput
                   placeholder="Name"
-                  password={true}
                   onChangeText={text => {
                     this.setState({ name: text });
                   }}

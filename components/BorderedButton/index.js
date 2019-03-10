@@ -59,7 +59,7 @@ class BorderedButton extends Component {
       );
     } else {
       return (
-        <Link href={this.props.href}>
+        <Link href={this.props.href} prefetch>
           <div
             className={style.container}
             style={{

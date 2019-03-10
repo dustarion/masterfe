@@ -37,6 +37,7 @@ class LoginPage extends Component {
               }
               localStorage.setItem("token", data.token);
               localStorage.setItem("pfp", data.pfp);
+              Router.push("/dashboard");
             });
         } else {
           axios
@@ -63,6 +64,7 @@ class LoginPage extends Component {
     const token = localStorage.getItem("token");
     if (this.props.query.e != undefined || null) {
       this.setState({ email: this.props.query.e });
+      return;
     }
     if (token) {
       Router.push("/dashboard");
