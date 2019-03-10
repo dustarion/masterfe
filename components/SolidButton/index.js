@@ -3,13 +3,27 @@ import style from "./index.css";
 import Link from "next/link";
 
 class SolidButton extends Component {
+  state = {
+    shadow: ""
+  };
   render() {
     if (typeof this.props.onClick === "function") {
       return (
         <div
           className={style.container}
           onClick={() => this.props.onClick()}
-          style={{ background: this.props.color }}
+          style={{
+            background: this.props.color,
+            "box-shadow": this.state.shadow
+          }}
+          onMouseEnter={() => {
+            if (this.props.shadow) {
+              this.setState({ shadow: "1px 1px 2px gray" });
+            }
+          }}
+          onMouseLeave={() => {
+            this.setState({ shadow: "" });
+          }}
         >
           <span
             className={style.text}
@@ -25,7 +39,15 @@ class SolidButton extends Component {
                   ? 30
                   : this.props.size == "medium"
                   ? 40
-                  : 50
+                  : 50,
+              fontSize:
+                typeof this.props.fontSize === "undefined"
+                  ? 16
+                  : this.props.fontSize,
+              color:
+                typeof this.props.fontColor === "undefined"
+                  ? "white"
+                  : this.props.fontColor
             }}
           >
             {this.props.text}
@@ -37,7 +59,18 @@ class SolidButton extends Component {
         <Link href={this.props.href}>
           <div
             className={style.container}
-            style={{ background: this.props.color }}
+            style={{
+              background: this.props.color,
+              "box-shadow": this.state.shadow
+            }}
+            onMouseEnter={() => {
+              if (this.props.shadow) {
+                this.setState({ shadow: "1px 1px 2px gray" });
+              }
+            }}
+            onMouseLeave={() => {
+              this.setState({ shadow: "" });
+            }}
           >
             <span
               className={style.text}
@@ -53,7 +86,15 @@ class SolidButton extends Component {
                     ? 30
                     : this.props.size == "medium"
                     ? 40
-                    : 50
+                    : 50,
+                fontSize:
+                  typeof this.props.fontSize === "undefined"
+                    ? 16
+                    : this.props.fontSize,
+                color:
+                  typeof this.props.fontColor === "undefined"
+                    ? "white"
+                    : this.props.fontColor
               }}
             >
               {this.props.text}

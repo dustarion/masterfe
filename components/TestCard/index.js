@@ -18,16 +18,22 @@ class TestCard extends Component {
         <div className={style.inputArea}>
           <CockpitTestInput />
           <div>
-          <SolidButton
-            color="#ff0039"
-            text="continue"
-            size="small"
-          />
-          <SolidButton
-            color= "transparent"
-            text="don't know"
-            size="small"
-          />
+            <SolidButton
+              color="#ff0039"
+              text="continue"
+              size="small"
+              shadow={true}
+              fontSize={15}
+            />
+            <div style={{ marginTop: 15 }}>
+              <SolidButton
+                color="transparent"
+                text="don't know"
+                size="small"
+                fontSize={12}
+                fontColor="#ff0039"
+              />
+            </div>
           </div>
         </div>
       </div>
