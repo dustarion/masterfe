@@ -5,8 +5,8 @@ class SetsButton extends Component {
   render() {
     return (
       <div className={style.container}>
-        <span className={style.gradientLeftBar}>
-        </span>
+        <div className={style.gradientLeftBar}>
+        </div>
         
         <span className={style.name}>
           {this.props.title == undefined || null ? "Error" : this.props.title}

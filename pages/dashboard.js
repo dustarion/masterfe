@@ -17,7 +17,7 @@ class DashboardPage extends Component {
 
   sets() {
     return (
-      <div>
+      <div className={style.setsRow}>
         <SetsButton title="Introduction to Organic Chemistry" progress="66%"/>
         <SetsButton title="Molecules" progress="66%"/>
         <SetsButton title="Flux Capacitor and Temporal Displacement" progress="66%"/>
