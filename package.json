@@ -27,6 +27,7 @@
     "next-redux-wrapper": "^3.0.0-alpha.2",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
+    "react-gradient-text": "^0.1.0",
     "react-image": "^2.0.0",
     "react-redux": "^6.0.1",
     "react-spring": "^8.0.14",
