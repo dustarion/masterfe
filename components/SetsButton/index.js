@@ -6,14 +6,14 @@ class SetsButton extends Component {
     return (
       <div className={style.container}>
         <div className={style.gradientLeftBar} />
-
-        <span className={style.name}>
-          {this.props.title == undefined || null ? "Error" : this.props.title}
-        </span>
-
-        <span className={style.progressText}>
+        <div className={style.contentWrapper}>
+          <span className={style.title}>
+            {this.props.title == undefined || null ? "Error" : this.props.title}
+          </span>
+        </div>
+        <span className={style.subtitle}>
           {this.props.progress == undefined || null
-            ? "0%"
+            ? "Error"
             : this.props.progress}
         </span>
       </div>

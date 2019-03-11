@@ -3,6 +3,8 @@ import style from "./dashboard.css";
 import Header from "../components/Header";
 import FolderButton from "../components/FolderButton";
 import SetsButton from "../components/SetsButton";
+import axios from "axios";
+import { BACKEND_URL } from "../Constants";
 
 class DashboardPage extends Component {
   folders() {
@@ -17,12 +19,21 @@ class DashboardPage extends Component {
 
   sets() {
     return (
-      <div className={style.setsRow}>
-        <SetsButton title="Introduction to Organic Chemistry" progress="66%"/>
-        <SetsButton title="Molecules" progress="66%"/>
-        <SetsButton title="Flux Capacitor and Temporal Displacement" progress="66%"/>
-      </div>
+      <ul className={style.setsRow}>
+        <SetsButton title="Introduction to Organic Chemistry" progress="66%" />
+        <SetsButton
+          title="Flux Capacitor and Temporal Displacement"
+          progress="66%"
+        />
+      </ul>
     );
+  }
+
+  componentDidMount() {
+    const token = localStorage.getItem("token");
+    axios.post(BACKEND_URL + "/getUserSets", { token }).then(({ data }) => {
+      console.log(data);
+    });
   }
 
   render() {
@@ -35,12 +46,11 @@ class DashboardPage extends Component {
             display: "flex"
           }}
         >
-          <div>
+          <div style={{ background: "#212121" }}>
             <div className={style.folderCard}>
               <span className={style.headerText}>Folders</span>
               {this.folders()}
             </div>
-            
           </div>
           <div className={style.contentWrapper}>
             <div className={style.recentCard}>

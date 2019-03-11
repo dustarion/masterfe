@@ -1,12 +1,14 @@
 .container {
   background: white;
-  display: flex;
-  align-items: center;
+  height: 80px;
+  overflow: hidden;
   border-radius: 10px;
-  padding-right: 50px;
-  margin: 10px;
-  max-height: 150px;
+  display: flex;
+  max-width: 20vw;
   transition: 0.2s;
+  align-items: center;
+  padding-right: 20px;
+  margin-bottom: 20px;
 }
 
 .container:hover {
@@ -15,25 +17,27 @@
 }
 
 .gradientLeftBar {
-  background: gold; /*gradient this shit*/
-  background-image: linear-gradient(#33255e, #db2776);
+  min-width: 15px;
   height: 100%;
-  width: 15px;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  background: linear-gradient(#33255e, #db2776);
 }
 
-.name {
-  padding: 20px;
-  font-size: 1em;
-  font-family: "Montserrat", Helvetica, Arial, sans-serif;
-  font-weight: 400;
+.contentWrapper {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  padding-right: 20px;
+  padding-left: 20px;
   flex: 1;
 }
 
-.progressText {
-  text-align: right;
-  font-size: 1.2em;
+.title {
   font-family: "Montserrat", Helvetica, Arial, sans-serif;
+}
+
+.subtitle {
+  font-family: "Raleway", Helvetica, Arial, sans-serif;
+  margin-left: 20px;
   font-weight: 600;
+  font-size: 1.2em;
 }

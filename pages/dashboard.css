@@ -45,7 +45,6 @@
 }
 
 .setsRow {
-  display: flex;
-  padding: 10px;
+  columns: 3;
+  padding: 0px;
 }
-
