@@ -11,10 +11,10 @@
   margin-bottom: 20px;
 }
 
-.container:hover {
+/* .container:hover {
   transform: scale(1.02);
   filter: drop-shadow(0 0 2rem #121212);
-}
+} */
 
 .gradientLeftBar {
   min-width: 15px;

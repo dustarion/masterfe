@@ -7,6 +7,10 @@ import axios from "axios";
 import { BACKEND_URL } from "../Constants";
 
 class DashboardPage extends Component {
+  state = {
+    sets: null
+  };
+
   folders() {
     return (
       <div>
@@ -18,22 +22,29 @@ class DashboardPage extends Component {
   }
 
   sets() {
-    return (
-      <ul className={style.setsRow}>
-        <SetsButton title="Introduction to Organic Chemistry" progress="66%" />
-        <SetsButton
-          title="Flux Capacitor and Temporal Displacement"
-          progress="66%"
-        />
-      </ul>
-    );
+    if (this.state.sets != null) {
+      var x = [];
+
+      this.state.sets.forEach(setData => {
+        x.push(<SetsButton title={setData.title} progress="0%" />);
+      });
+      return x;
+    } else {
+      return (
+        <div>
+          <span>Error</span>
+        </div>
+      );
+    }
   }
 
   componentDidMount() {
     const token = localStorage.getItem("token");
     axios.post(BACKEND_URL + "/getUserSets", { token }).then(({ data }) => {
       console.log(data);
+      this.setState({ sets: data });
     });
+    // Get Folders
   }
 
   render() {
@@ -54,9 +65,7 @@ class DashboardPage extends Component {
           </div>
           <div className={style.contentWrapper}>
             <div className={style.recentCard}>
-              <span className={style.headerText}>In Progress</span>
-              {this.sets()}
-              <span className={style.headerText}>Last Week</span>
+              <span className={style.headerText}>Study Sets</span>
               {this.sets()}
             </div>
           </div>
