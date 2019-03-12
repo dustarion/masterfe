@@ -23,8 +23,14 @@ class DashboardPage extends Component {
 
   sets() {
     if (this.state.sets != null) {
+      if (this.state.sets.length == 0) {
+        return (
+          <div>
+            <span style={{ color: "white" }}>no sets</span>
+          </div>
+        );
+      }
       var x = [];
-
       this.state.sets.forEach(setData => {
         x.push(<SetsButton title={setData.title} progress="0%" />);
       });
@@ -32,7 +38,7 @@ class DashboardPage extends Component {
     } else {
       return (
         <div>
-          <span>Error</span>
+          <span>Loading</span>
         </div>
       );
     }
@@ -40,10 +46,15 @@ class DashboardPage extends Component {
 
   componentDidMount() {
     const token = localStorage.getItem("token");
-    axios.post(BACKEND_URL + "/getUserSets", { token }).then(({ data }) => {
-      console.log(data);
-      this.setState({ sets: data });
-    });
+    axios
+      .post(BACKEND_URL + "/getUserSets", { token })
+      .then(({ data }) => {
+        console.log(data);
+        this.setState({ sets: data });
+      })
+      .catch(err => {
+        console.error(err);
+      });
     // Get Folders
   }
 
