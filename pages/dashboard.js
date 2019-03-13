@@ -8,17 +8,31 @@ import { BACKEND_URL } from "../Constants";
 
 class DashboardPage extends Component {
   state = {
+    folders: null,
     sets: null
   };
 
   folders() {
-    return (
-      <div>
-        <FolderButton title="Rocket Science" />
-        <FolderButton title="Cognitive Psychology" />
-        <FolderButton title="Quantum Physics" />
-      </div>
-    );
+    if (this.state.folders != null) {
+      if (this.state.folders.length == 0) {
+        return (
+          <div>
+            <span style={{ color: "white" }}>no folders</span>
+          </div>
+        );
+      }
+      var x = [];
+      this.state.folders.forEach(folderData => {
+        x.push(<FolderButton title={folderData.title} />);
+      });
+      return x;
+    } else {
+      return (
+        <div>
+          <span>Loading</span>
+        </div>
+      );
+    }
   }
 
   sets() {
@@ -46,6 +60,8 @@ class DashboardPage extends Component {
 
   componentDidMount() {
     const token = localStorage.getItem("token");
+
+    // Get Sets
     axios
       .post(BACKEND_URL + "/getUserSets", { token })
       .then(({ data }) => {
@@ -55,7 +71,17 @@ class DashboardPage extends Component {
       .catch(err => {
         console.error(err);
       });
+
     // Get Folders
+    axios
+      .post(BACKEND_URL + "/getUserFolders", { token })
+      .then(({ data }) => {
+        console.log(data);
+        this.setState({ folders: data });
+      })
+      .catch(err => {
+        console.error(err);
+      });
   }
 
   render() {
