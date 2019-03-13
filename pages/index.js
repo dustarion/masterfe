@@ -58,7 +58,10 @@ class IndexPage extends Component {
             <Img src="/static/iPhone.png" className={style.img} />
           </div>
         </section>
-        <section className={style.section} style={{ background: "#212121" }}>
+        <section
+          className={style.section}
+          style={{ background: "#212121", height: 1600 }}
+        >
           <div style={{ marginTop: 100, width: "100%" }}>
             <h1 className={style.h1}>How it works</h1>
             <div

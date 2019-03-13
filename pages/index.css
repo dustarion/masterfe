@@ -6,8 +6,8 @@
 .section {
   height: 700px;
   display: flex;
-  padding-left: 20vw;
-  padding-right: 20vw;
+  /* padding-left: 20vw;
+  padding-right: 20vw; */
 }
 
 .h1 {
@@ -27,5 +27,6 @@
 }
 
 .img {
-  width: 100%;
+  width: 40vw;
+  max-width: 700px;
 }
