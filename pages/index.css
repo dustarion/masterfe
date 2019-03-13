@@ -2,3 +2,27 @@
   background: #212121;
   height: 100vh;
 }
+
+.section {
+  background: linear-gradient(#33255e, #db2776);
+  height: 700px;
+  display: flex;
+  padding-left: 20vw;
+  padding-right: 20vw;
+}
+
+.h2 {
+  margin: 0;
+  font-family: "Raleway", sans-serif;
+  color: white;
+  align-self: center;
+  font-size: 4em;
+  font-weight: 700;
+}
+
+.subtitle {
+  font-family: "Lato", sans-serif;
+  color: white;
+  font-size: 1.2em;
+  margin-top: 15px;
+}
