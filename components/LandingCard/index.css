@@ -1,0 +1,29 @@
+.container {
+  height: 300px;
+  width: 300px;
+  border-radius: 5px;
+  background: white;
+  filter: drop-shadow(0 0 1rem black);
+  transition: 0.2s;
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  padding: 20px;
+}
+
+.container:hover {
+  filter: drop-shadow(0 0 1.2rem gray);
+}
+
+.title {
+  font-family: "Raleway", sans-serif;
+  text-align: center;
+}
+
+.content {
+  font-family: "Lato", sans-serif;
+  font-size: 1.3em;
+  text-align: center;
+  font-weight: 300;
+  line-height: 1.5em;
+}
