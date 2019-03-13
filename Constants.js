@@ -3,4 +3,4 @@ export const redux = {
   RESET_ALL: "resetall"
 };
 
-export const BACKEND_URL = "https://master.cx:8080";
+export const BACKEND_URL = "http://master.cx:8080";
