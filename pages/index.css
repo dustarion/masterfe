@@ -27,6 +27,5 @@
 }
 
 .img {
-  width: 40vw;
-  max-width: 700px;
+  object-fit: contain;
 }

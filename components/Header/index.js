@@ -6,24 +6,49 @@ import { withRouter } from "next/router";
 import Link from "next/link";
 
 class Header extends Component {
+  state = {
+    width: 0
+  };
+
+  componentDidMount() {
+    this.setState({ width: window.innerWidth });
+    window.addEventListener("resize", () => {
+      this.setState({ width: window.innerWidth });
+    });
+  }
+
   buttons() {
     switch (this.props.router.pathname) {
       case "/":
         return (
           <div className={style.actionButtonContainer}>
-            <SolidButton
-              color="#ff0039"
-              text="sign up"
-              href="/signup"
-              shadow={true}
-            />
-            <BorderedButton
-              color="black"
-              text="Login"
-              href="/login"
-              borderColor="#ff0039"
-              shadow={true}
-            />
+            {this.state.width < 600 ? (
+              <div style={{ display: "flex" }}>
+                <BorderedButton
+                  color="black"
+                  text="menu"
+                  href="/login"
+                  borderColor="#ff0039"
+                  shadow={true}
+                />
+              </div>
+            ) : (
+              <div style={{ display: "flex" }}>
+                <SolidButton
+                  color="#ff0039"
+                  text="sign up"
+                  href="/signup"
+                  shadow={true}
+                />
+                <BorderedButton
+                  color="black"
+                  text="Login"
+                  href="/login"
+                  borderColor="#ff0039"
+                  shadow={true}
+                />
+              </div>
+            )}
           </div>
         );
       case "/login":
