@@ -1,9 +1,10 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import style from "./index.css";
 import SolidButton from "../SolidButton";
 import BorderedButton from "../BorderedButton";
-import { withRouter } from "next/router";
+import {withRouter} from "next/router";
 import Link from "next/link";
+import Img from 'react-image'
 
 class Header extends Component {
   state = {
@@ -11,9 +12,9 @@ class Header extends Component {
   };
 
   componentDidMount() {
-    this.setState({ width: window.innerWidth });
+    this.setState({width: window.innerWidth});
     window.addEventListener("resize", () => {
-      this.setState({ width: window.innerWidth });
+      this.setState({width: window.innerWidth});
     });
   }
 
@@ -23,7 +24,7 @@ class Header extends Component {
         return (
           <div className={style.actionButtonContainer}>
             {this.state.width < 600 ? (
-              <div style={{ display: "flex" }}>
+              <div style={{display: "flex"}}>
                 <BorderedButton
                   color="black"
                   text="menu"
@@ -33,7 +34,7 @@ class Header extends Component {
                 />
               </div>
             ) : (
-              <div style={{ display: "flex" }}>
+              <div style={{display: "flex"}}>
                 <SolidButton
                   color="#ff0039"
                   text="sign up"
@@ -79,10 +80,17 @@ class Header extends Component {
             />
           </div>
         );
+      case "/dashboard":
+        return (
+          <div className={style.actionButtonContainer}>
+            <Img src={'/static/fadedBar.png'} style={{height: 50, width: 50, borderRadius: '50%'}}/>
+          </div>
+        )
       default:
         return null;
     }
   }
+
   render() {
     return (
       <div className={style.container}>

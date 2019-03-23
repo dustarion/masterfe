@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import style from "./signup.css";
 import Header from "../components/Header";
 import BG from "../components/BG";
 import TextInput from "../components/TextInput";
 import SolidButton from "../components/SolidButton";
 import validator from "validator";
-import { useSpring, animated } from "react-spring";
+import {animated, useSpring} from "react-spring";
 import firebase from "firebase";
 
 function Error(gProps) {
@@ -13,7 +13,7 @@ function Error(gProps) {
   const props = useSpring({
     opacity: hasError ? 1 : 0,
     height: hasError ? 20 : 0,
-    from: { opacity: hasError ? 0 : 1, height: hasError ? 0 : 20 }
+    from: {opacity: hasError ? 0 : 1, height: hasError ? 0 : 20}
   });
   return (
     <animated.div
@@ -25,7 +25,7 @@ function Error(gProps) {
         justifyContent: "center"
       }}
     >
-      <span style={{ color: "red", fontFamily: "Lato", fontSize: 20 }}>
+      <span style={{color: "red", fontFamily: "Lato", fontSize: 20}}>
         {gProps.error}
       </span>
     </animated.div>
@@ -47,21 +47,21 @@ class SignUpPage extends Component {
     const cfmpass = this.state.cfmPass;
     const name = this.state.name;
     if (!validator.isEmail(email)) {
-      this.setState({ error: "Please enter a valid email" });
+      this.setState({error: "Please enter a valid email"});
       return;
     }
-    if (!validator.isLength(name, { min: 1 })) {
-      this.setState({ error: "Please enter a valid name" });
+    if (!validator.isLength(name, {min: 1})) {
+      this.setState({error: "Please enter a valid name"});
       return;
     }
-    if (!validator.isLength(pass, { min: 6 })) {
+    if (!validator.isLength(pass, {min: 6})) {
       this.setState({
         error: "Please enter a password that is longer than 6 characters"
       });
       return;
     }
     if (pass != cfmpass) {
-      this.setState({ error: "Confirm password is not the same as password" });
+      this.setState({error: "Confirm password is not the same as password"});
       return;
     }
     firebase
@@ -75,27 +75,27 @@ class SignUpPage extends Component {
             firebase
               .auth()
               .currentUser.sendEmailVerification({
-                url:
-                  "http://localhost:3080/login?n=" +
-                  name +
-                  "&fsu=true&e=" +
-                  email
-              })
+              url:
+                "http://localhost:8080/signup?n=" +
+                name +
+                "&e=" +
+                email
+            })
               .then(() => {
                 alert("email sent");
               });
           });
       })
       .catch(err => {
-        this.setState({ error: JSON.stringify(err) });
+        this.setState({error: JSON.stringify(err)});
       });
   }
 
   render() {
     return (
       <div className={style.container}>
-        <Header />
-        <BG />
+        <Header/>
+        <BG/>
         <div className={style.contentWrapper}>
           <div className={style.sideLeft}>
             <div className={style.contentLeft}>
@@ -105,16 +105,16 @@ class SignUpPage extends Component {
                 <TextInput
                   placeholder="Email"
                   onChangeText={text => {
-                    this.setState({ email: text });
-                    this.setState({ error: "" });
+                    this.setState({email: text});
+                    this.setState({error: ""});
                   }}
                   id="email"
                 />
                 <TextInput
                   placeholder="Name"
                   onChangeText={text => {
-                    this.setState({ name: text });
-                    this.setState({ error: "" });
+                    this.setState({name: text});
+                    this.setState({error: ""});
                   }}
                   id="name"
                 />
@@ -122,8 +122,8 @@ class SignUpPage extends Component {
                   placeholder="Password"
                   password={true}
                   onChangeText={text => {
-                    this.setState({ password: text });
-                    this.setState({ error: "" });
+                    this.setState({password: text});
+                    this.setState({error: ""});
                   }}
                   id="password"
                 />
@@ -131,17 +131,17 @@ class SignUpPage extends Component {
                   placeholder="Confirm Password"
                   password={true}
                   onChangeText={text => {
-                    this.setState({ cfmPass: text });
-                    this.setState({ error: "" });
+                    this.setState({cfmPass: text});
+                    this.setState({error: ""});
                   }}
                   id="cfmPass"
                   onReturn={() => {
                     this.initSignUp();
                   }}
                 />
-                <Error error={this.state.error} />
+                <Error error={this.state.error}/>
                 <div
-                  style={{ marginTop: 30, marginLeft: -10, marginRight: -10 }}
+                  style={{marginTop: 30, marginLeft: -10, marginRight: -10}}
                 >
                   <SolidButton
                     color="#ff0039"
@@ -152,7 +152,7 @@ class SignUpPage extends Component {
               </div>
             </div>
           </div>
-          <div style={{ flex: 1 }} />
+          <div style={{flex: 1}}/>
         </div>
       </div>
     );

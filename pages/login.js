@@ -1,14 +1,14 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import style from "./login.css";
 import Header from "../components/Header";
 import BG from "../components/BG";
 import TextInput from "../components/TextInput";
 import SolidButton from "../components/SolidButton";
 import axios from "axios";
-import { BACKEND_URL } from "../Constants";
+import {BACKEND_URL} from "../Constants";
 import firebase from "firebase";
 import Router from "next/router";
-import { useSpring, animated } from "react-spring";
+import {animated, useSpring} from "react-spring";
 import validator from "validator";
 
 function Error(gProps) {
@@ -16,7 +16,7 @@ function Error(gProps) {
   const props = useSpring({
     opacity: hasError ? 1 : 0,
     height: hasError ? 20 : 0,
-    from: { opacity: hasError ? 0 : 1, height: hasError ? 0 : 20 }
+    from: {opacity: hasError ? 0 : 1, height: hasError ? 0 : 20}
   });
   return (
     <animated.div
@@ -28,7 +28,7 @@ function Error(gProps) {
         justifyContent: "center"
       }}
     >
-      <span style={{ color: "red", fontFamily: "Lato", fontSize: 20 }}>
+      <span style={{color: "red", fontFamily: "Lato", fontSize: 20}}>
         {gProps.error}
       </span>
     </animated.div>
@@ -42,18 +42,18 @@ class LoginPage extends Component {
     error: ""
   };
 
-  static getInitialProps({ query }) {
-    return { query };
+  static getInitialProps({query}) {
+    return {query};
   }
 
   initLogin() {
     const email = this.state.email;
     const pass = this.state.password;
     if (!validator.isEmail(email)) {
-      this.setState({ error: "Please enter a valid email" });
+      this.setState({error: "Please enter a valid email"});
       return;
     }
-    if (!validator.isLength(pass, { min: 6 })) {
+    if (!validator.isLength(pass, {min: 6})) {
       this.setState({
         error: "Please enter a password that is longer than 6 characters"
       });
@@ -63,52 +63,32 @@ class LoginPage extends Component {
       .auth()
       .signInWithEmailAndPassword(email, pass)
       .then(x => {
-        if (this.props.query.fsu) {
-          axios
-            .post(BACKEND_URL + "/redirectSignUp", {
-              uid: x.user.uid,
-              e: x.user.email,
-              n: this.props.query.n
-            })
-            .then(({ data }) => {
-              if (data.error) {
-                return this.setState({ error: data.msg });
-              }
-              localStorage.setItem("token", data.token);
-              localStorage.setItem("pfp", data.pfp);
-              Router.push("/dashboard");
-            })
-            .catch(error => {
-              this.setState({ error: "An error occurred" });
-            });
-        } else {
-          axios
-            .post(BACKEND_URL + "/localSignIn", {
-              uid: x.user.uid,
-              e: x.user.email
-            })
-            .then(({ data }) => {
-              if (data.error) {
-                return this.setState({ error: data.msg });
-              }
-              localStorage.setItem("token", data.token);
-              localStorage.setItem("pfp", data.pfp);
-              Router.push("/dashboard");
-            })
-            .catch(error => {
-              this.setState({ error: "An error occurred" });
-            });
-        }
+        axios
+          .post(BACKEND_URL + "/auth/signin", {
+            uid: x.user.uid,
+            e: x.user.email
+          })
+          .then(({data}) => {
+            if (data.error) {
+              return this.setState({error: data.msg});
+            }
+            localStorage.setItem("token", data.token);
+            localStorage.setItem("pfp", data.pfp);
+            Router.push("/dashboard");
+          })
+          .catch(error => {
+            this.setState({error: "An error occurred"});
+          });
       })
       .catch(err => {
-        this.setState({ error: "An error occurred" });
+        this.setState({error: "An error occurred"});
       });
   }
 
   componentDidMount() {
     const token = localStorage.getItem("token");
     if (this.props.query.e != undefined || null) {
-      this.setState({ email: this.props.query.e });
+      this.setState({email: this.props.query.e});
       return;
     }
     if (token) {
@@ -119,8 +99,8 @@ class LoginPage extends Component {
   render() {
     return (
       <div className={style.container}>
-        <Header />
-        <BG />
+        <Header/>
+        <BG/>
         <div className={style.contentWrapper}>
           <div className={style.sideLeft}>
             <div className={style.contentLeft}>
@@ -130,7 +110,7 @@ class LoginPage extends Component {
                 <TextInput
                   placeholder="Email"
                   onChangeText={text => {
-                    this.setState({ email: text });
+                    this.setState({email: text});
                   }}
                   value={this.props.query.fsu ? this.props.query.e : undefined}
                   id="email"
@@ -139,16 +119,16 @@ class LoginPage extends Component {
                   placeholder="Password"
                   password={true}
                   onChangeText={text => {
-                    this.setState({ password: text });
+                    this.setState({password: text});
                   }}
                   id="password"
                   onReturn={() => {
                     this.initLogin();
                   }}
                 />
-                <Error error={this.state.error} />
+                <Error error={this.state.error}/>
                 <div
-                  style={{ marginTop: 30, marginLeft: -10, marginRight: -10 }}
+                  style={{marginTop: 30, marginLeft: -10, marginRight: -10}}
                 >
                   <SolidButton
                     color="#ff0039"
@@ -159,7 +139,7 @@ class LoginPage extends Component {
               </div>
             </div>
           </div>
-          <div style={{ flex: 1 }} />
+          <div style={{flex: 1}}/>
         </div>
       </div>
     );
