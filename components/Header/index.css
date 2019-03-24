@@ -1,30 +1,29 @@
 .container {
-  height: 80px;
-  background: black;
-  display: flex;
-  align-items: center;
+    height: 80px;
+    background: black;
+    display: flex;
+    align-items: center;
 }
 
 .logoIcon {
-  height: auto;
-  width: auto;
-  max-height: 50%;
-  object-fit: contain;
-  margin-left: 10vw;
-  cursor: pointer;
+    height: auto;
+    width: auto;
+    max-height: 50%;
+    object-fit: contain;
+    margin-left: 10vw;
+    cursor: pointer;
 }
 
 .actionButtonContainer {
-  flex: 1;
-  margin-right: 10vw;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 .captionText {
-  color: gray;
-  font-family: "Montserrat", sans-serif;
-  font-size: 15px;
-  margin: 15px;
+    color: gray;
+    font-family: "Montserrat", sans-serif;
+    font-size: 15px;
+    margin: 15px;
 }

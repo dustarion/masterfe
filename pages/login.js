@@ -64,7 +64,7 @@ class LoginPage extends Component {
       .signInWithEmailAndPassword(email, pass)
       .then(x => {
         axios
-          .post(BACKEND_URL + "/auth/signin", {
+          .post(BACKEND_URL + "/auth/login", {
             uid: x.user.uid,
             e: x.user.email
           })

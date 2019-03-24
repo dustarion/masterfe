@@ -7,6 +7,9 @@ import SolidButton from "../components/SolidButton";
 import validator from "validator";
 import {animated, useSpring} from "react-spring";
 import firebase from "firebase";
+import axios from 'axios'
+import {BACKEND_URL} from "../Constants";
+import Router from "next/dist/client/router";
 
 function Error(gProps) {
   const hasError = gProps.error.length > 0 ? true : false;
@@ -71,19 +74,30 @@ class SignUpPage extends Component {
         firebase
           .auth()
           .signInWithEmailAndPassword(email, pass)
-          .then(() => {
+          .then((x) => {
+            axios.post(BACKEND_URL + '/auth/signup', {
+              uid: x.user.uid,
+              e: email,
+              n: name
+            }).then(({data}) => {
+              if (data.error) {
+                return this.setState({error: data.msg});
+              }
+              localStorage.setItem("token", data.token);
+              localStorage.setItem("pfp", data.pfp);
+              Router.push("/dashboard");
+            }).catch(error => {
+              this.setState({error: "An error occurred"});
+            });
             firebase
               .auth()
               .currentUser.sendEmailVerification({
               url:
-                "http://localhost:8080/signup?n=" +
-                name +
-                "&e=" +
-                email
+                "http://localhost:8080/emailverified"
+            }).catch((error) => {
+              console.error(error)
+              this.setState(({error: "an error occurred when sending email verification"}))
             })
-              .then(() => {
-                alert("email sent");
-              });
           });
       })
       .catch(err => {

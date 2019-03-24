@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import Header from "../components/Header";
+import React, {Component} from "react";
 import style from "./index.css";
 import SolidButton from "../components/SolidButton";
 import Img from "react-image";
 import LandingCard from "../components/LandingCard";
+import Header from "../components/Header"
 
 class IndexPage extends Component {
   state = {
@@ -11,16 +11,16 @@ class IndexPage extends Component {
   };
 
   componentDidMount() {
-    this.setState({ width: window.innerWidth });
+    this.setState({width: window.innerWidth});
     window.addEventListener("resize", () => {
-      this.setState({ width: window.innerWidth });
+      this.setState({width: window.innerWidth});
     });
   }
 
   render() {
     return (
       <div className={style.container}>
-        <Header />
+        <Header/>
         <section
           className={style.section}
           style={{
@@ -28,8 +28,8 @@ class IndexPage extends Component {
             background: "linear-gradient(#33255e, #db2776)",
             flexDirection: this.state.width < 600 ? "column" : "row",
             height: this.state.width < 600 ? "auto" : 700,
-            paddingLeft: 150,
-            paddingRight: 150
+            paddingLeft: this.state.width < 600 ? "10vw" : 150,
+            paddingRight: this.state.width < 600 ? "10vw" : 150
           }}
         >
           <div
@@ -49,13 +49,13 @@ class IndexPage extends Component {
             >
               <h1 className={style.h1}>
                 Use Master.
-                <br />
+                <br/>
                 Study Faster.
               </h1>
               <span className={style.subtitle}>
                 Get good grades without breaking yourself.
               </span>
-              <div style={{ width: 250, marginTop: 20 }}>
+              <div style={{width: 250, marginTop: 20}}>
                 <SolidButton
                   color="black"
                   text="get started for free"
@@ -84,8 +84,8 @@ class IndexPage extends Component {
                 width:
                   this.state.width < 950
                     ? this.state.width < 600
-                      ? "80vw"
-                      : "50vw"
+                    ? "80vw"
+                    : "50vw"
                     : 600
               }}
             />
@@ -95,18 +95,18 @@ class IndexPage extends Component {
           className={style.section}
           style={{
             background: "#212121",
-            paddingLeft: 150,
-            paddingRight: 150,
+            paddingLeft: this.state.width < 600 ? "10vw" : 150,
+            paddingRight: this.state.width < 600 ? "10vw" : 150,
             paddingBottom: 100,
             height:
               this.state.width < 1300
                 ? this.state.width < 940
-                  ? 1400
-                  : 1000
-                : 700
+                ? 1500
+                : 1000
+                : 700,
           }}
         >
-          <div style={{ marginTop: 100, width: "100%" }}>
+          <div style={{marginTop: 100, width: "100%"}}>
             <h1 className={style.h1}>How it works</h1>
             <div
               style={{
@@ -116,7 +116,7 @@ class IndexPage extends Component {
                 flexDirection: "column"
               }}
             >
-              <div style={{ display: "flex", justifyContent: "center" }}>
+              <div style={{display: "flex", justifyContent: "center"}}>
                 {this.state.width < 940 ? (
                   <div
                     style={{
@@ -190,11 +190,11 @@ class IndexPage extends Component {
             background: "linear-gradient(#db2776, #33255e)",
             alignItems: "center",
             height: 500,
-            flexDirection: "column"
+            flexDirection: "column",
           }}
         >
           <h1 className={style.h1}>Sign up now</h1>
-          <div style={{ marginTop: 50, width: 200 }}>
+          <div style={{marginTop: 50, width: 200}}>
             <SolidButton
               color="#373981"
               text="sign up"

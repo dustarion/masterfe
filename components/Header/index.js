@@ -22,7 +22,7 @@ class Header extends Component {
     switch (this.props.router.pathname) {
       case "/":
         return (
-          <div className={style.actionButtonContainer}>
+          <div className={style.actionButtonContainer} style={{marginRight: this.state.width < 600 ? 20 : "10vw"}}>
             {this.state.width < 600 ? (
               <div style={{display: "flex"}}>
                 <BorderedButton
@@ -31,6 +31,7 @@ class Header extends Component {
                   href="/login"
                   borderColor="#ff0039"
                   shadow={true}
+                  size={"small"}
                 />
               </div>
             ) : (
@@ -83,7 +84,8 @@ class Header extends Component {
       case "/dashboard":
         return (
           <div className={style.actionButtonContainer}>
-            <Img src={'/static/fadedBar.png'} style={{height: 50, width: 50, borderRadius: '50%'}}/>
+            <Img src={this.props.profPic ? this.props.profPic : "/static/fadedBar.png"}
+                 style={{height: 50, width: 50, borderRadius: '50%'}}/>
           </div>
         )
       default:
@@ -95,12 +97,17 @@ class Header extends Component {
     return (
       <div className={style.container}>
         <Link href="/">
-          <img
+          {this.state.width < 600 ? (
+            <img
+              src="/static/MasterLogoDetailed.png"
+              style={{width: "30%", marginLeft: "10vw"}}
+            />
+          ) : (<img
             src="/static/MasterLogoDetailed.png"
             className={style.logoIcon}
-          />
+          />)}
         </Link>
-        {this.buttons()}
+        {/*{this.buttons()}*/}
       </div>
     );
   }
